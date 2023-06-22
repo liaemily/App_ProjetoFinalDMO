@@ -25,10 +25,10 @@
 
             <TextView
                 android:id="@+id/textview_name"
-                android:layout_width="wrap_content"
+                android:layout_width="171dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="20dp"
                 android:singleLine="true"
                 android:text="Nome"
                 android:textSize="24sp" />
@@ -39,19 +39,19 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="left|center_vertical"
-                android:layout_marginLeft="100dp"
+                android:layout_marginEnd="10dp"
                 android:singleLine="true"
                 android:src="@drawable/ic_date"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/textview_date"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left|center_vertical"
-                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="10dp"
                 android:singleLine="true"
                 android:text="Nome"
+                android:textAlignment="center"
                 android:textSize="24sp" />
 
         </LinearLayout>

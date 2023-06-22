@@ -123,7 +123,9 @@ public class TaskPresenter implements TaskMVP.Presenter{
     @Override
     public void updateUI(Intent intent, EditText name, EditText date, EditText type, EditText obs, ActionBar toolBar) {
         if(intent.hasExtra(Constants.FIRESTORE_DOCUMENT_KEY)){
+
             firestoreId = intent.getStringExtra(Constants.FIRESTORE_DOCUMENT_KEY);
+            System.out.println(firestoreId);
             database.collection(Constants.TASKS_COLLECTION).document(firestoreId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {

@@ -7,14 +7,17 @@ public class User {
     private String telefone;
     private String email;
 
+    private String image;
+
     public User() {
     }
 
-    public User(String nome, String sobrenome, String telefone, String email) {
+    public User(String nome, String sobrenome, String telefone, String email, String image) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.telefone = telefone;
         this.email = email;
+        this.image = image;
     }
 
     public String getNome() {
@@ -47,5 +50,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

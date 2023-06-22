@@ -1,13 +1,18 @@
 package br.edu.ifsp.dmos5.app_projetofinal.view;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
 
 import br.edu.ifsp.dmos5.app_projetofinal.R;
 import br.edu.ifsp.dmos5.app_projetofinal.mvp.TaskMVP;
@@ -24,8 +29,11 @@ public class TaskActivity extends AppCompatActivity implements TaskMVP.View{
         setContentView(R.layout.activity_task);
 
         findById();
+        setListener();
+
         presenter = new TaskPresenter(this);
         presenter.updateUI(getIntent(), nameEditText, dateEditText, typeEditText, obsEditText, getSupportActionBar());
+
     }
 
     @Override
@@ -70,6 +78,30 @@ public class TaskActivity extends AppCompatActivity implements TaskMVP.View{
         dateEditText = findViewById(R.id.edittext_date);
         typeEditText = findViewById(R.id.edittext_type);
         obsEditText = findViewById(R.id.edittext_obs);
+    }
+
+    private void setListener(){
+        dateEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(TaskActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                dateEditText.setBackground(null);
+                                String date = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year ;
+                                dateEditText.setText(date);
+                            }
+                        }, year, month, day);
+                datePickerDialog.show();
+            }
+        });
     }
 
     private void saveTask(){

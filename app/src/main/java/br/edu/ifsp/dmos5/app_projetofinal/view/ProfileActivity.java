@@ -1,16 +1,25 @@
 package br.edu.ifsp.dmos5.app_projetofinal.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.net.URI;
 
 import br.edu.ifsp.dmos5.app_projetofinal.R;
 import br.edu.ifsp.dmos5.app_projetofinal.mvp.ProfileMVP;
@@ -24,6 +33,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileMVP.Vie
     private EditText mPhoneEditText;
     private EditText mEmailEditText;
     private ImageView mPhotoImageView;
+    private Uri imageUri;
+
+    private String image;
+    ActivityResultLauncher<Intent> activityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +48,14 @@ public class ProfileActivity extends AppCompatActivity implements ProfileMVP.Vie
 
         findById();
         setListener();
+        checkGalery();
+
     }
 
     protected void onStart() {
         super.onStart();
 
-        presenter.populate(mNameEditText, mSurnameEditText, mPhoneEditText, mEmailEditText);
+        presenter.populate(mNameEditText, mSurnameEditText, mPhoneEditText, mEmailEditText, mPhotoImageView);
         presenter.startListener();
     }
 
@@ -93,8 +108,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileMVP.Vie
         String surname = mSurnameEditText.getText().toString();
         String phone = mPhoneEditText.getText().toString();
         String email = mEmailEditText.getText().toString();
+        String image = imageUri.toString();
 
-        presenter.saveUser(name, surname, phone, email);
+        presenter.saveUser(name, surname, phone, email, image);
 
         finish();
     }
@@ -110,13 +126,36 @@ public class ProfileActivity extends AppCompatActivity implements ProfileMVP.Vie
         mPhotoImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openGalery();
+                openGalery(activityResultLauncher);
             }
         });
     }
 
-    private void openGalery(){
+    private void checkGalery(){
+        activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK){
+                            Intent data = result.getData();
+                            imageUri = data.getData();
+                            mPhotoImageView.setImageURI(imageUri);
 
+                        } else {
+                            Toast.makeText(ProfileActivity.this, "Erro ao adicionar imagem.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
+    }
+
+    private void openGalery(ActivityResultLauncher activityResultLauncher){
+
+        Intent photoPicker = new Intent();
+        photoPicker.setAction(Intent.ACTION_GET_CONTENT);
+        photoPicker.setAction(Intent.ACTION_OPEN_DOCUMENT);
+        photoPicker.setType("image/*");
+        activityResultLauncher.launch(photoPicker);
     }
 
     @Override
