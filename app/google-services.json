@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1010141154127",
+    "project_id": "app-pets-d0c4e",
+    "storage_bucket": "app-pets-d0c4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010141154127:android:299937ca981bb0227b533a",
+        "android_client_info": {
+          "package_name": "br.edu.ifsp.dmos5.app_projetofinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010141154127-168p070i5na960l032qd91sdblthnpjh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfsBINBLBh3bvdptMdFkoN2pT4gxROKTY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010141154127-168p070i5na960l032qd91sdblthnpjh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Pat Your Pet</string>
+    <string name="btn_login">Entrar</string>
+    <string name="btn_register">Cadastrar</string>
+    <string name="hint_password">Senha</string>
+    <string name="text_register">Clique aqui para se cadastrar</string>
+    <string name="text_olaTutor">Olá tutor(a), vamos começar?</string>
+    <string name="text_possuiConta">Já possui cadastro?</string>
+    <string name="text_login">Clique aqui para entrar</string>
+    <string name="info_register">Olá</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_phone">Telefone</string>
+    <string name="hint_name">Nome</string>
+    <string name="hint_surname">Sobrenome</string>
+    <string name="menu_logout">Sair</string>
+    <string name="menu_saveProfile">Salvar perfil</string>
+    <string name="menu_profileUser">Perfil do usuário</string>
+    <string name="menu_profilePet">Perfil do pet</string>
+    <string name="hint_obs">Observação</string>
+    <string name="hint_date">Data</string>
+    <string name="hint_type">Tipo</string>
+    <string name="menu_saveTask">Salvar tarefa</string>
+    <string name="menu_deleteTask">Deletar tarefa</string>
+
+</resources>
