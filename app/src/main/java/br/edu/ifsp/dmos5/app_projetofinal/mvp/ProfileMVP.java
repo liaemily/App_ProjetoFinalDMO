@@ -15,7 +15,7 @@ public interface ProfileMVP {
         void detach();
         void startListener();
         void stopListener();
-        void saveUser(String name, String surname, String phone, String email, String image);
+        void saveUser(String name, String surname, String phone, String email, Uri image);
         void populate(EditText name, EditText surname, EditText phone, EditText email, ImageView image);
         void logout();
     }

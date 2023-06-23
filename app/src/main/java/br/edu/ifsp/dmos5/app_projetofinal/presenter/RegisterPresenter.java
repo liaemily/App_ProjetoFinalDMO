@@ -64,7 +64,7 @@ public class RegisterPresenter implements RegisterMVP.Presenter {
                     try {
                         throw task.getException();
                     } catch (FirebaseAuthWeakPasswordException e) {
-                        Toast.makeText(view.getContext(), "Contato cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), "A senha informada é fraca.", Toast.LENGTH_SHORT).show();
                     } catch (FirebaseAuthUserCollisionException e) {
                         Toast.makeText(view.getContext(), "O e-mail informado já está sendo utilizado.", Toast.LENGTH_SHORT).show();
                     } catch (FirebaseAuthInvalidCredentialsException e){

@@ -1,6 +1,5 @@
 package br.edu.ifsp.dmos5.app_projetofinal.presenter;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,9 +18,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.OnProgressListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnPausedListener;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.time.Instant;
 
 import br.edu.ifsp.dmos5.app_projetofinal.constant.Constants;
@@ -34,13 +38,12 @@ public class ProfilePresenter implements ProfileMVP.Presenter {
     private FirebaseFirestore database;
     private String userID = "";
     private User user = null;
-
     private StorageReference storage;
 
     public ProfilePresenter(ProfileMVP.View view) {
         this.view = view;
         database = FirebaseFirestore.getInstance();
-        storage = FirebaseStorage.getInstance().getReference();
+        storage = FirebaseStorage.getInstance().getReference(Constants.USERS_COLLECTION);
     }
 
     @Override
@@ -59,11 +62,24 @@ public class ProfilePresenter implements ProfileMVP.Presenter {
     }
 
     @Override
-    public void saveUser(String name, String surname, String phone, String email, String image) {
+    public void saveUser(String name, String surname, String phone, String email, Uri image) {
 
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        User user = new User(name, surname, phone, email, image);
+        System.out.println(image);
+
+        Uri imageupload;
+
+        StorageMetadata metadata = new StorageMetadata.Builder()
+                .setContentType("image/jpeg")
+                .build();
+
+        UploadTask uploadTask;
+        uploadTask = storage.child("images/" + image.getLastPathSegment()).putFile(image, metadata);
+
+        StorageReference refImg = storage.child("images/" + image.getLastPathSegment());
+
+        User user = new User(name, surname, phone, email, refImg.getDownloadUrl().toString());
 
         FirebaseAuth.getInstance().getCurrentUser().updateEmail(email);
 
@@ -87,6 +103,7 @@ public class ProfilePresenter implements ProfileMVP.Presenter {
     @Override
     public void populate(EditText name, EditText surname, EditText phone, EditText email, ImageView image) {
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         DocumentReference documentReference = database.collection(Constants.USERS_COLLECTION).document(userID);
 
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {

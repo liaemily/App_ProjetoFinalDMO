@@ -10,6 +10,7 @@ public class Constants {
     public static final String ATTR_EMAIL = "email";
 
     public static final String TASKS_COLLECTION = "Tasks";
+    public static final String IMAGES_COLLECTION = "Images";
     public static final String ATTR_TASK_NAME = "nome";
     public static final String ATTR_TASK_DATE = "data";
     public static final String ATTR_TASK_TYPE = "tipo";

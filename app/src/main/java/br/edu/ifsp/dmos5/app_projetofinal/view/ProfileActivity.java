@@ -108,9 +108,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileMVP.Vie
         String surname = mSurnameEditText.getText().toString();
         String phone = mPhoneEditText.getText().toString();
         String email = mEmailEditText.getText().toString();
-        String image = imageUri.toString();
+        //String image = imageUri.toString();
 
-        presenter.saveUser(name, surname, phone, email, image);
+        presenter.saveUser(name, surname, phone, email, imageUri);
 
         finish();
     }
