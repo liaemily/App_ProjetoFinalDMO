@@ -12,6 +12,9 @@
         android:theme="@style/Theme.App_projetofinal"
         tools:targetApi="31">
         <activity
+            android:name=".view.PetActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.TaskActivity"
             android:exported="false" />
         <activity

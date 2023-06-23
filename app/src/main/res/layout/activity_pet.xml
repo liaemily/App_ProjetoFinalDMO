@@ -1,11 +1,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_background"
     android:padding="16dp"
-    tools:context=".view.ProfileActivity">
+    tools:context=".view.TaskActivity">
 
     <ImageView
         android:id="@+id/ic_profile"
@@ -20,89 +21,175 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ic_email"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="340dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_email"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ic_phone"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="420dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_phone"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/hint_name"
+        android:textColor="@color/pink"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ic_profile"
+        app:layout_constraintStart_toStartOf="@+id/ic_profile"
+        app:layout_constraintTop_toBottomOf="@+id/ic_profile" />
 
     <EditText
         android:id="@+id/edittext_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
+        android:layout_width="373dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
         android:hint="@string/hint_name"
         android:inputType="text"
         android:padding="8dp"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/text_name"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/text_name"
+        app:layout_constraintTop_toBottomOf="@+id/text_name" />
 
-    <EditText
-        android:id="@+id/edittext_surname"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/text_animal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@color/white"
-        android:hint="@string/hint_surname"
-        android:inputType="text"
-        android:padding="8dp"
-        android:textAlignment="center"
-        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:text="@string/text_animal"
+        android:textColor="@color/pink"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/edittext_name"
         app:layout_constraintStart_toStartOf="@+id/edittext_name"
-        app:layout_constraintTop_toBottomOf="@id/edittext_name" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_name" />
 
     <EditText
-        android:id="@+id/edittext_email"
-        android:layout_width="0dp"
+        android:id="@+id/edittext_animal"
+        android:layout_width="365dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="5dp"
         android:background="@color/white"
-        android:hint="@string/hint_email"
+        android:hint="@string/hint_animal"
         android:inputType="text"
         android:padding="8dp"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@id/edittext_surname"
-        app:layout_constraintStart_toStartOf="@id/edittext_surname"
-        app:layout_constraintTop_toBottomOf="@id/edittext_surname" />
+        app:layout_constraintEnd_toEndOf="@+id/text_animal"
+        app:layout_constraintStart_toStartOf="@+id/text_animal"
+        app:layout_constraintTop_toBottomOf="@+id/text_animal" />
+
+    <TextView
+        android:id="@+id/text_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/text_age"
+        android:textColor="@color/pink"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_animal"
+        app:layout_constraintStart_toStartOf="@+id/edittext_animal"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_animal" />
 
     <EditText
-        android:id="@+id/edittext_phone"
-        android:layout_width="0dp"
+        android:id="@+id/edittext_age"
+        android:layout_width="365dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="5dp"
         android:background="@color/white"
-        android:hint="@string/hint_phone"
-        android:inputType="textPassword"
+        android:hint="@string/text_age"
+        android:inputType="number"
         android:padding="8dp"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@id/edittext_email"
-        app:layout_constraintStart_toStartOf="@id/edittext_email"
-        app:layout_constraintTop_toBottomOf="@id/edittext_email" />
+        app:layout_constraintEnd_toEndOf="@+id/text_age"
+        app:layout_constraintStart_toStartOf="@+id/text_age"
+        app:layout_constraintTop_toBottomOf="@+id/text_age" />
+
+    <TextView
+        android:id="@+id/text_peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/text_peso"
+        android:textColor="@color/pink"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_age"
+        app:layout_constraintStart_toStartOf="@+id/edittext_age"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_age" />
+
+    <EditText
+        android:id="@+id/edittext_peso"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:hint="@string/text_peso"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/text_peso"
+        app:layout_constraintStart_toStartOf="@+id/text_peso"
+        app:layout_constraintTop_toBottomOf="@+id/text_peso" />
+
+    <TextView
+        android:id="@+id/text_raca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/text_raca"
+        android:textColor="@color/pink"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_peso"
+        app:layout_constraintStart_toStartOf="@+id/edittext_peso"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_peso" />
+
+    <EditText
+        android:id="@+id/edittext_raca"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:hint="@string/text_raca"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/text_raca"
+        app:layout_constraintStart_toStartOf="@+id/text_raca"
+        app:layout_constraintTop_toBottomOf="@+id/text_raca" />
+
+    <TextView
+        android:id="@+id/text_cor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/text_cor"
+        android:textColor="@color/pink"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_raca"
+        app:layout_constraintStart_toStartOf="@+id/edittext_raca"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_raca" />
+
+    <EditText
+        android:id="@+id/edittext_cor"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:hint="@string/text_cor"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/text_cor"
+        app:layout_constraintStart_toStartOf="@+id/text_cor"
+        app:layout_constraintTop_toBottomOf="@+id/text_cor" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

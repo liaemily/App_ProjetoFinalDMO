@@ -40,6 +40,8 @@ public class ProfilePresenter implements ProfileMVP.Presenter {
     private User user = null;
     private StorageReference storage;
 
+    private String urlDownload = "";
+
     public ProfilePresenter(ProfileMVP.View view) {
         this.view = view;
         database = FirebaseFirestore.getInstance();
@@ -62,24 +64,13 @@ public class ProfilePresenter implements ProfileMVP.Presenter {
     }
 
     @Override
-    public void saveUser(String name, String surname, String phone, String email, Uri image) {
+    public void saveUser(String name, String surname, String phone, String email) {
 
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        System.out.println(image);
+        user = new User(name, surname, phone, email, urlDownload);
 
-        Uri imageupload;
-
-        StorageMetadata metadata = new StorageMetadata.Builder()
-                .setContentType("image/jpeg")
-                .build();
-
-        UploadTask uploadTask;
-        uploadTask = storage.child("images/" + image.getLastPathSegment()).putFile(image, metadata);
-
-        StorageReference refImg = storage.child("images/" + image.getLastPathSegment());
-
-        User user = new User(name, surname, phone, email, refImg.getDownloadUrl().toString());
+        System.out.println("url download user = " + user.getImage());
 
         FirebaseAuth.getInstance().getCurrentUser().updateEmail(email);
 
@@ -101,7 +92,7 @@ public class ProfilePresenter implements ProfileMVP.Presenter {
     }
 
     @Override
-    public void populate(EditText name, EditText surname, EditText phone, EditText email, ImageView image) {
+    public void populate(EditText name, EditText surname, EditText phone, EditText email) {
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         DocumentReference documentReference = database.collection(Constants.USERS_COLLECTION).document(userID);
@@ -116,9 +107,6 @@ public class ProfilePresenter implements ProfileMVP.Presenter {
                         surname.setText(user.getSobrenome());
                         phone.setText(user.getTelefone());
                         email.setText(user.getEmail());
-
-                        Glide.with(view.getContext()).load(user.getImage()).into(image);
-
                     }
                 }
             }

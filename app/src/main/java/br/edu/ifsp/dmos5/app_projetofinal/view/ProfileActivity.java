@@ -55,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileMVP.Vie
     protected void onStart() {
         super.onStart();
 
-        presenter.populate(mNameEditText, mSurnameEditText, mPhoneEditText, mEmailEditText, mPhotoImageView);
+        presenter.populate(mNameEditText, mSurnameEditText, mPhoneEditText, mEmailEditText);
         presenter.startListener();
     }
 
@@ -108,9 +108,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileMVP.Vie
         String surname = mSurnameEditText.getText().toString();
         String phone = mPhoneEditText.getText().toString();
         String email = mEmailEditText.getText().toString();
-        //String image = imageUri.toString();
 
-        presenter.saveUser(name, surname, phone, email, imageUri);
+        presenter.saveUser(name, surname, phone, email);
 
         finish();
     }
@@ -153,7 +152,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileMVP.Vie
 
         Intent photoPicker = new Intent();
         photoPicker.setAction(Intent.ACTION_GET_CONTENT);
-        photoPicker.setAction(Intent.ACTION_OPEN_DOCUMENT);
         photoPicker.setType("image/*");
         activityResultLauncher.launch(photoPicker);
     }

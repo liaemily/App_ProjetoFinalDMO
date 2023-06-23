@@ -6,7 +6,6 @@ public class User {
     private String sobrenome;
     private String telefone;
     private String email;
-
     private String image;
 
     public User() {
