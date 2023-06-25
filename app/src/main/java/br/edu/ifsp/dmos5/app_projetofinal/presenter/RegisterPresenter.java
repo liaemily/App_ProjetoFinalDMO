@@ -86,7 +86,7 @@ public class RegisterPresenter implements RegisterMVP.Presenter {
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
-        User user = new User(name, surname, phone, email, null);
+        User user = new User(name, surname, phone, email);
 
         DocumentReference documentReference = database.collection(Constants.USERS_COLLECTION).document(userID);
 

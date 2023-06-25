@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import br.edu.ifsp.dmos5.app_projetofinal.mvp.LoginMVP;
@@ -55,6 +56,8 @@ public class LoginPresenter implements LoginMVP.Presenter {
                         throw task.getException();
                     } catch (FirebaseAuthInvalidCredentialsException e) {
                         Toast.makeText(view.getContext(), "Credenciais inválidas.", Toast.LENGTH_SHORT).show();
+                    } catch (FirebaseAuthInvalidUserException e){
+                        Toast.makeText(view.getContext(), "O usuário informado não foi encontrado.", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
