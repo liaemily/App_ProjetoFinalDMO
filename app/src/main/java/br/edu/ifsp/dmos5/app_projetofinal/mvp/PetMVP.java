@@ -15,7 +15,7 @@ public interface PetMVP {
         void detach();
         void startListener();
         void stopListener();
-        void savePet(String name, String animal, String date, String peso, String race, String color);
-        void populate(EditText name, EditText animal, EditText date, EditText peso, EditText race, EditText color);
+        void savePet(String name, String animal, String age, String peso, String race, String color);
+        void populate(EditText name, EditText animal, EditText age, EditText peso, EditText race, EditText color);
     }
 }

@@ -23,7 +23,7 @@
     <string name="menu_deleteTask">Deletar tarefa</string>
     <string name="text_age">Idade (em anos)</string>
     <string name="text_raca">Raça</string>
-    <string name="text_peso">Peso</string>
+    <string name="text_peso">Peso (em kg)</string>
     <string name="text_cor">Cor</string>
     <string name="text_animal">Qual é o seu bichinho?</string>
     <string name="hint_animal">Ex: Gato/Cachorro/Hamster</string>

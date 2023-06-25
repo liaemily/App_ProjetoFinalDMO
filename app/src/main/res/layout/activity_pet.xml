@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/app_background"
     android:padding="16dp"
-    tools:context=".view.TaskActivity">
+    tools:context=".view.PetActivity">
 
     <ImageView
         android:id="@+id/ic_profile"
@@ -126,7 +126,7 @@
         android:layout_marginTop="5dp"
         android:background="@color/white"
         android:hint="@string/text_peso"
-        android:inputType="text"
+        android:inputType="number"
         android:padding="8dp"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -176,7 +176,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edittext_raca" />
 
     <EditText
-        android:id="@+id/edittext_cor"
+        android:id="@+id/edittext_color"
         android:layout_width="365dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

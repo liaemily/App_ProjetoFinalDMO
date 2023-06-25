@@ -38,14 +38,10 @@ public class ProfilePresenter implements ProfileMVP.Presenter {
     private FirebaseFirestore database;
     private String userID = "";
     private User user = null;
-    private StorageReference storage;
-
-    private String urlDownload = "";
 
     public ProfilePresenter(ProfileMVP.View view) {
         this.view = view;
         database = FirebaseFirestore.getInstance();
-        storage = FirebaseStorage.getInstance().getReference(Constants.USERS_COLLECTION);
     }
 
     @Override
@@ -68,9 +64,7 @@ public class ProfilePresenter implements ProfileMVP.Presenter {
 
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        user = new User(name, surname, phone, email, urlDownload);
-
-        System.out.println("url download user = " + user.getImage());
+        user = new User(name, surname, phone, email);
 
         FirebaseAuth.getInstance().getCurrentUser().updateEmail(email);
 

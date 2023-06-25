@@ -80,7 +80,8 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View{
     }
 
     private void openProfilePet() {
-
+        Intent intent = new Intent(this, PetActivity.class);
+        this.startActivity(intent);
     }
 
     private void findById(){

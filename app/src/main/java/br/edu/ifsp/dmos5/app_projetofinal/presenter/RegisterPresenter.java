@@ -94,7 +94,7 @@ public class RegisterPresenter implements RegisterMVP.Presenter {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(view.getContext(), "Contato cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                        System.out.println("Usuário cadastrado!");
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
