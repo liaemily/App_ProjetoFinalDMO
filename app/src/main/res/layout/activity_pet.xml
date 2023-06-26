@@ -12,7 +12,7 @@
         android:id="@+id/ic_profile"
         android:layout_width="108dp"
         android:layout_height="108dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bg_image_view_profile"
         android:onClick="callGallery"
         android:scaleType="centerInside"

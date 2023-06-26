@@ -137,12 +137,11 @@ public class PetActivity extends AppCompatActivity implements PetMVP.View{
 
     private void saveProfile(){
         String name = nameEditText.getText().toString();
-        String animal = nameEditText.getText().toString();
+        String animal = animalEditText.getText().toString();
         String age = ageEditText.getText().toString();
         String peso = pesoEditText.getText().toString();
         String raca = racaEditText.getText().toString();
         String color = colorEditText.getText().toString();
-        String image = imageUri.toString();
 
         presenter.savePet(name, animal, age, peso, raca, color);
 
